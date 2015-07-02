@@ -4,3 +4,7 @@ Feature: Initials Setting
 		Given A program require "search_json_data"
 		When the class Data is instantied
 		Then the method data_array return a Array
+	Scenario: show all data by argument
+		Given A program require "search_json_data"
+		When the class Data is instantied with "example.json"
+		Then the method data_array return a Array
