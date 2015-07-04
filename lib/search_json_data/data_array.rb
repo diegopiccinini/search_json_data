@@ -69,6 +69,11 @@ module SearchJsonData
         self.search_by(negative[1 .. -1],field,"-", precision) if negative and negative.length > 1
         @results
     end
+
+    # to clean the result collection
+    def clean_results
+        @results = []
+    end
   end
 
   private
