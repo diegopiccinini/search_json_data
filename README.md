@@ -79,7 +79,7 @@ you will get this results
 =begin
 you will get this results
 => [{"Name"=>"JScript", "Type"=>"Curly-bracket, Procedural, Reflective, Scripting", "Designed by"=>"Microsoft"}, {"Name"=>"VBScript", "Type"=>"Interpreted, Procedural, Scripting, Object-oriented class-based", "Designed by"=>"Microsoft"}, {"Name"=>"Windows PowerShell", "Type"=>"Command line interface, Curly-bracket, Interactive mode, Interpreted, Scripting", "Designed by"=>"Microsoft"}, {"Name"=>"AppleScript", "Type"=>"Scripting", "Designed by"=>"Apple Inc."}, {"Name"=>"Delphi", "Type"=>"Compiled, Object-oriented class-based, Reflective", "Designed by"=>"Apple, Niklaus Wirth, Anders Hejlsberg"}, {"Name"=>"Swift", "Type"=>"Compiled", "Designed by"=>"Chris Lattner, Apple Inc."}]
-
+ =end
 # serching negative
 @data.search_by "Scripting -Microsoft"
 =begin
@@ -118,4 +118,4 @@ Run
 ```bash
 yard doc
 ```
-and open this file with your browser [doc/index.html](http://doc/index.html)
+and open this file with your browser doc/index.html
