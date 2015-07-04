@@ -4,5 +4,5 @@ end
 
 Then(/^should match a programming language named "([^"]*)"$/) do |finded|
 
-  expect(@results[0]).to include("Name" => finded)
+  expect(@results).to all(include("Name" => finded))
 end

@@ -49,7 +49,7 @@ module SearchJsonData
             # if match one or more words
             match = is_match words_to_match, data_for_search, nil, precision
             # if match one or more exactly phrases
-            match = is_match exactly_phrases, data_for_search, nil, precision unless match
+            match = match & (is_match exactly_phrases, data_for_search, nil, precision)
 
             # when match is true add the data_hash to the results
             results << data_hash if match
@@ -85,9 +85,10 @@ module SearchJsonData
     # @param precision [Boolean, false] false by default, true is case sensitive
     # @return [Boolean] true is any value or phrase match, otherwise false
     def is_match(collection, data_hash, condition = nil, precision = false)
-        match = false
-
+        all_matches = true
         collection.each do |text|
+            match = false
+            # in this loop if only one match return true
             data_hash.each_value do |value|
                 if precision
                     match = true if value.include? text
@@ -97,7 +98,8 @@ module SearchJsonData
                 # to exclude array in negative search
                 match = false if condition == "-" and value.include? ',' and text=='array'
             end
+            all_matches = all_matches & match # if only one doesn't match return false
         end
-        match
+        all_matches
     end
 end
