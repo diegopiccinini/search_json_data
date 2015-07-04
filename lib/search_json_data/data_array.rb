@@ -14,9 +14,10 @@ module SearchJsonData
     #
     # @param words [String] words to search, when are quoted must match exactly
     # @param field [String] the name of the field, is nil by default in this case search in all fields
-    # @param condition [String] the condition to search, by default nil to add results to the before search,
+    # @param condition [String, nil] the condition to search, by default nil to add results to the before search,
     # otherwise AND return only the results in both searches
-    # @return results [Array] collection of matching results
+    # @param precision [Boolean, false] false by default, true is case sensitive
+    # @return [Array] collection of matching results
     def search_by(words, field = nil, condition = nil, precision = false)
 
         # to include negative searchs
@@ -71,11 +72,13 @@ module SearchJsonData
   end
 
   private
+
     # return true when one or more values include one or more words or phrases
     # @param collection [Array] words or phrases to search
     # @param data_hash [Hash] a hash that contain values to search in its
-    # @param condition [String] condition for negatives matches
-    # @return match [Boolean] true is any value or phrase match, otherwise false
+    # @param condition [String, nil] condition for negatives matches
+    # @param precision [Boolean, false] false by default, true is case sensitive
+    # @return [Boolean] true is any value or phrase match, otherwise false
     def is_match(collection, data_hash, condition = nil, precision = false)
         match = false
 

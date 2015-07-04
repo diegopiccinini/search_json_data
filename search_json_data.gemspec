@@ -23,4 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "shoulda-matchers", "~> 2.8"
   spec.add_development_dependency 'cucumber', "~> 2.0"
   spec.add_development_dependency 'rspec-expectations', "~> 3.3"
+  spec.add_development_dependency 'yard', "~> 0.8.7"
+
 end
