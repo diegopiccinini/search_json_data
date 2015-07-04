@@ -13,3 +13,4 @@ Feature: Support Exact Matches
         Then  should return all "Scripting" languages
         And designed by "Microsoft"
         And have 3 results
+

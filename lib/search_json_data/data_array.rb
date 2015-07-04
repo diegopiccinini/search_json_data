@@ -17,7 +17,7 @@ module SearchJsonData
     # @param condition [String] the condition to search, by default nil to add results to the before search,
     # otherwise AND return only the results in both searches
     # @return results [Array] collection of matching results
-    def search_by(words, field = nil, condition = nil)
+    def search_by(words, field = nil, condition = nil, precision = false)
 
         # to include negative searchs
         negative = words.scan(/-.*?$/).first
@@ -46,9 +46,9 @@ module SearchJsonData
             data_for_search = data_hash.select { |k,v| k == field } if field
 
             # if match one or more words
-            match = is_match words_to_match, data_for_search
+            match = is_match words_to_match, data_for_search, nil, precision
             # if match one or more exactly phrases
-            match = is_match exactly_phrases, data_for_search unless match
+            match = is_match exactly_phrases, data_for_search, nil, precision unless match
 
             # when match is true add the data_hash to the results
             results << data_hash if match
@@ -65,7 +65,7 @@ module SearchJsonData
             @results = @results | results.uniq
         end
         # when the phrase has a negative value search for this value
-        self.search_by(negative[1 .. -1],field,"-") if negative and negative.length > 1
+        self.search_by(negative[1 .. -1],field,"-", precision) if negative and negative.length > 1
         @results
     end
   end

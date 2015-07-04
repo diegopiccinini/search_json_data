@@ -31,3 +31,4 @@ end
 Then(/^have (\d+) results$/) do |total|
   expect(@results.count).to be_equal total.to_i
 end
+
